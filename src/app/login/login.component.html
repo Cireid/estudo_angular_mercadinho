@@ -1,0 +1,70 @@
+<div class="bgColor">
+    <div class="container ">
+        <div class="row pt-5 align-items-center">
+            <div class="col-8">
+                <img src="assets/img/layout-mercadinho.jpg" alt="">
+            </div>
+            <div class="col-4 p-4 lShadow" style="background-color: white;">
+                <form>
+                    <div class="mb-3">
+                        <label for="email_usuario" class="form-label">Endereço de E-mail</label>
+                        <input type="email" class="form-control" id="email_usuario" aria-describedby="emailHelp">
+                    </div>
+                    <div class="mb-3">
+                        <label for="senha_usuario" class="form-label">Senha</label>
+                        <input type="password" class="form-control" id="senha_usuario">
+                    </div>
+                        <div class="mb-3 form-check">
+                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                        <label class="form-check-label" for="exampleCheck1">Lembrar de mim</label>
+                        
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100">Entrar</button>
+                    <br>
+                    <p class="text-center mt-1 mb-0">ou</p>
+                    <div class="d-flex justify-content-center">
+                        <a class="" data-bs-toggle="modal" data-bs-target="#novoUsuario" href="#novoUsuario">Cadastre-se aqui</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="novoUsuario" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Novo Cadastro</h5>
+            <button (click)="form.reset()" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form [formGroup]="form"></form>
+            <div class="input-group mb-3">
+                <label for="">Nome do usuario</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <input id="nome_usuario" name="nome_usuario" type="text" class="form-control" placeholder="Nome do Usuario">
+            </div>
+
+            <div class="input-group mb-3">
+                <label for="">E-mail</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <input id="email_usuario" name="email_usuario" type="email" class="form-control" placeholder="E-mail do usuario">
+            </div>
+
+            <div class="input-group mb-3">
+                <label for="">Senha</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <input id="senha_usuario" name="senha_usuario" type="password" class="form-control" placeholder="Crie sua nova senha">
+            </div>
+
+            <div class="input-group mb-3">
+                <label for="">Repita sua senha</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <input type="password" class="form-control"  placeholder="Repita sua senha">
+            </div>
+        </div>
+            <div class="modal-footer">
+                <button (click)="form.reset()" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                <button (click)="createUsuario()" type="button" class="btn btn-primary">Cadastrar</button>
+            </div>
+        </div>
+    </div>
+</div>

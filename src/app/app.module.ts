@@ -11,6 +11,8 @@ import { CartComponent } from './cart/cart.component';
 import { IndexComponent } from './adm/index/index.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProdutoService } from './services/produto.service';
+import { LoginComponent } from './login/login.component';
+import { CadastroComponent } from './cadastro/cadastro.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,9 @@ import { ProdutoService } from './services/produto.service';
     ProductsComponent,
     NavbarComponent,
     CartComponent,
-    IndexComponent
+    IndexComponent,
+    LoginComponent,
+    CadastroComponent
   ],
   imports: [
     BrowserModule,

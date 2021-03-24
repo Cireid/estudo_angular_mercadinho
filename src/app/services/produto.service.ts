@@ -9,20 +9,24 @@ export class ProdutoService {
   constructor(private http: HttpClient) { }
 
   getProduto(){
-    return this.http.get('http://192.168.1.2/api/produto/').toPromise();
+    return this.http.get('http://192.168.1.4/api/produto/').toPromise();
   }
 
   createProduto(form){
     console.log('service', form)
-    return this.http.post('http://192.168.1.2/api/produto/add', form).toPromise();
+    return this.http.post('http://192.168.1.4/api/produto/add', form).toPromise();
   }
 
   updateProduto(form, id){
-    return this.http.put(`http://192.168.1.2/api/produto/update/${id}`, JSON.stringify(form)).toPromise();
+    return this.http.put(`http://192.168.1.4/api/produto/update/${id}`, JSON.stringify(form)).toPromise();
   }
 
   deleteProduto(id){
     console.log('service',id)
-    return this.http.delete(`http://192.168.1.2/api/produto/delete/${id}`).toPromise();
+    return this.http.delete(`http://192.168.1.4/api/produto/delete/${id}`).toPromise();
   }
+
+  // getDetails(id){
+  //   return this.http.get(`http://192.168.1.4/api/produto/${id}`).toPromise();
+  // }
 }

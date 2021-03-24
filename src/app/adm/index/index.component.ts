@@ -41,13 +41,19 @@ export class IndexComponent implements OnInit {
       return;
     }
     this.service.createProduto(this.form.value)
-    .then(() => this.listar())
+    .then(() => {
+      this.listar();
+      this.form.reset();
+    })
     .catch(error => console.log(this.form.value));
   }
 
   update(){
     this.service.updateProduto(this.modelid, this.form.value)
-    .then(() => this.listar())
+    .then(() => {
+      this.listar();
+      this.form.reset();
+    })
     .catch(error => console.log(error))
   }
 
@@ -66,5 +72,6 @@ export class IndexComponent implements OnInit {
       quantidade_produto: data.quantidade_produto,
     })
   }
-
 }
+
+

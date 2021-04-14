@@ -12,7 +12,10 @@ import { IndexComponent } from './adm/index/index.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProdutoService } from './services/produto.service';
 import { LoginComponent } from './login/login.component';
-import { CadastroComponent } from './cadastro/cadastro.component';
+import { UsuarioComponent } from "./adm/usuario/usuario.component";
+import { ProdutoComponent } from './adm/produto/produto.component';
+
+
 
 @NgModule({
   declarations: [
@@ -23,7 +26,9 @@ import { CadastroComponent } from './cadastro/cadastro.component';
     CartComponent,
     IndexComponent,
     LoginComponent,
-    CadastroComponent
+    UsuarioComponent,
+    ProdutoComponent,
+
   ],
   imports: [
     BrowserModule,

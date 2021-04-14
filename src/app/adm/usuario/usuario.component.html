@@ -1,0 +1,153 @@
+<div class="col-10 ps-0">
+    <div class="container">
+        <div class="mt-3 d-flex justify-content-between">
+            <input (ngModelChange)="filtro($event)" type="text" [(ngModel)]="pesquisa" placeholder="Pesquisar">
+            <button class="btn btn-info" data-bs-toggle="modal" data-bs-target="#novoUsuario">
+                <i class="fas fa-plus-square me-2"></i>Novo Usuario
+            </button>
+        </div>
+        <table class="table mt-2">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Tipo do usuario</th>
+                    <th scope="col">Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let u of model">
+                    <td>{{ u.id }}</td>
+                    <td>{{ u.nome_usuario }}</td>
+                    <td>{{ u.tipo_usuario}}</td>
+                    <td>
+                        <button (click)="preencherForm(u)" class="btn btn-dark" 
+                        data-bs-target="#detalheUsuario"  data-bs-toggle="modal">
+                            <i class="fas fa-eye"></i></button>
+
+                        <button (click)="preencherForm(u)" data-bs-target="#editarUsuario" 
+                        data-bs-toggle="modal" class="btn btn-success mx-2">
+                            <i class="fas fa-pencil-alt"></i></button>
+
+                        <button (click)="delete(u.id)" class="btn btn-danger">
+                            <i class="fas fa-trash-alt"></i></button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+<div class="modal" id="novoUsuario" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title">Novo Usuario</h5>
+            <button (click)="form.reset()" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body p-3">
+            <form [formGroup]="form" >
+                <div class="input-group mb-3">
+                    <label class="d-flex align-items-center" for="">Nome do usuario</label>&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input formControlName="nome_usuario" type="text" id="nome_usuario" name="nome_usuario" class="form-control ms-4">
+                </div>
+    
+                <div class="input-group mb-3 d-flex">
+                    <label class="d-flex" for="">Email do usuario</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input formControlName="email_usuario" type="text" name="email_usuario" id="email_usuario" class="form-control ms-4">
+                </div>
+    
+                <div class="input-group mb-3">
+                    <label class="d-flex align-items-center" for="">Senha do usuario</label>&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input formControlName="senha_usuario" type="password" id="senha_usuario" name="senha_usuario" class="form-control ms-4">
+                </div>
+
+                <div class="input-group mb-3">
+                    <label class="d-flex align-items-center" for="">Tipo do usuario</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input formControlName="tipo_usuario" type="text" id="tipo_usuario" name="tipo_usuario" class="form-control ms-4" placeholder="Ex: Admin">
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <button (click)="form.reset()" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+            <button (click)="salvar()" type="button" class="btn btn-primary" data-bs-dismiss="modal">Salvar usuario</button>
+        </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="detalheUsuario" tabindex="-1" aria-hidden="true" aria-labelledby="teste" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title">Detalhes do usuario</h5>
+            <button (click)="form.reset()" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body p-3">
+            <form [formGroup]="form" >
+                <div class="input-group mb-3">
+                    <label class="d-flex align-items-center" for="">Nome do usuaro</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input formControlName="nome_usuario" type="text" id="nome_usuario" name="nome_usuario" class="form-control ms-4" disabled>
+                </div>
+    
+                <div class="input-group mb-3 d-flex">
+                    <label class="d-flex" for="">Email do usuario</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input formControlName="email_usuario" class="ms-1 form-control" name="email_usuario" id="email_usuario" disabled>
+                </div>
+    
+                <div class="input-group mb-3">
+                    <label class="d-flex align-items-center" for="">Senha do usuario</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input formControlName="senha_usuario" type="password" id="senha_usuario" name="senha_usuario" class="form-control ms-4" disabled>
+                </div>
+    
+                <div class="input-group mb-3">
+                    <label class="d-flex align-items-center" for="">Tipo do usuario</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input formControlName="tipo_usuario" type="text" id="tipo_usuario" name="tipo_usuario" class="form-control ms-4" disabled>
+                </div>
+            </form>
+        </div>
+            <div class="modal-footer">
+                <button (click)="form.reset()" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="editarUsuario" tabindex="-1" aria-hidden="true" aria-labelledby="teste" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title">Editar usuario</h5>
+            <button (click)="form.reset()" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body p-3">
+            <form [formGroup]="form" >
+                <div class="input-group mb-3">
+                    <label class="d-flex align-items-center" for="">Nome do produto</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input formControlName="nome_usuario" type="text" id="nome_usuario" name="nome_usuario" class="form-control ms-4">
+                </div>
+    
+                <div class="input-group mb-3 d-flex">
+                    <label class="d-flex" for="">Email do usuario</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input formControlName="email_usuario" class="form-control ms-1" name="email_usuario" id="email_usuario">
+                </div>
+    
+                <div class="input-group mb-3">
+                    <label class="d-flex align-items-center" for="">Senha do usuario</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input formControlName="senha_usuario" type="password" id="senha_usuario" name="senha_usuario" class="form-control ms-4">
+                </div>
+    
+                <div class="input-group mb-3">
+                    <label class="d-flex align-items-center" for="">Tipo do usuario</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input formControlName="tipo_usuario" type="text" id="tipo_usuario" name="tipo_usuario" class="form-control ms-4">
+                </div>
+            </form>
+        </div>
+            <div class="modal-footer">
+                <button (click)="form.reset()" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                <button (click)="update()" type="button" class="btn btn-primary" data-bs-dismiss="modal">Editar produto</button>
+            </div>
+        </div>
+    </div>
+</div>

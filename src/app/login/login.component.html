@@ -5,21 +5,21 @@
                 <img src="assets/img/layout-mercadinho.jpg" alt="">
             </div>
             <div class="col-4 p-4 lShadow" style="background-color: white;">
-                <form>
+                <form [formGroup]="form">
                     <div class="mb-3">
                         <label for="email_usuario" class="form-label">Endereço de E-mail</label>
-                        <input type="email" class="form-control" id="email_usuario" aria-describedby="emailHelp">
+                        <input formControlName="email_usuario" type="email" class="form-control" id="email_usuario" >
                     </div>
                     <div class="mb-3">
                         <label for="senha_usuario" class="form-label">Senha</label>
-                        <input type="password" class="form-control" id="senha_usuario">
+                        <input formControlName="senha_usuario" type="password" class="form-control" id="senha_usuario">
                     </div>
                         <div class="mb-3 form-check">
                         <input type="checkbox" class="form-check-input" id="exampleCheck1">
                         <label class="form-check-label" for="exampleCheck1">Lembrar de mim</label>
                         
                     </div>
-                    <button type="submit" class="btn btn-primary w-100">Entrar</button>
+                    <button type="submit" class="btn btn-primary w-100" (click)="entrar()">Entrar</button>
                     <br>
                     <p class="text-center mt-1 mb-0">ou</p>
                     <div class="d-flex justify-content-center">
@@ -40,30 +40,31 @@
             <button (click)="form.reset()" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-            <form [formGroup]="form"></form>
-            <div class="input-group mb-3">
-                <label for="">Nome do usuario</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <input id="nome_usuario" name="nome_usuario" type="text" class="form-control" placeholder="Nome do Usuario">
-            </div>
-
-            <div class="input-group mb-3">
-                <label for="">E-mail</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <input id="email_usuario" name="email_usuario" type="email" class="form-control" placeholder="E-mail do usuario">
-            </div>
-
-            <div class="input-group mb-3">
-                <label for="">Senha</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <input id="senha_usuario" name="senha_usuario" type="password" class="form-control" placeholder="Crie sua nova senha">
-            </div>
-
-            <div class="input-group mb-3">
-                <label for="">Repita sua senha</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <input type="password" class="form-control"  placeholder="Repita sua senha">
-            </div>
+            <form [formGroup]="form">
+                <div class="input-group mb-3">
+                    <label for="">Nome do usuario</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input formControlName="nome_usuario" form id="nome_usuario" name="nome_usuario" type="text" class="form-control" placeholder="Nome do Usuario">
+                </div>
+    
+                <div class="input-group mb-3">
+                    <label for="">E-mail</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input formControlName="email_usuario" id="email_usuario" name="email_usuario" type="email" class="form-control" placeholder="E-mail do usuario">
+                </div>
+    
+                <div class="input-group mb-3">
+                    <label for="">Senha</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input formControlName="senha_usuario" id="senha_usuario" name="senha_usuario" type="password" class="form-control" placeholder="Crie sua nova senha">
+                </div>
+    
+                <div class="input-group mb-3">
+                    <label for="">Repita sua senha</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input formControlName="repetir_senha" type="password" class="form-control"  placeholder="Repita sua senha">
+                </div>
+            </form>
         </div>
             <div class="modal-footer">
                 <button (click)="form.reset()" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-                <button (click)="createUsuario()" type="button" class="btn btn-primary">Cadastrar</button>
+                <button (click)="registrar()" type="button" class="btn btn-primary">Cadastrar</button>
             </div>
         </div>
     </div>

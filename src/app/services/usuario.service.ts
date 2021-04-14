@@ -10,19 +10,20 @@ export class UsuarioService {
 
 
   getUsuario(){
-    return this.http.get('http://192.168.1.4/api/usuario').toPromise();
+    return this.http.get('http://192.168.1.7/api/usuario').toPromise();
   }
 
   createUsuario(form){
-    return  this.http.post(`http://192.168.1.4/api/usuario`, form).toPromise();
+    return  this.http.post(`http://192.168.1.7/api/usuario`, form).toPromise();
   }
 
   updateUsuario(id, form){
-    return this.http.put(`http://192.168.1.4/api/usuario/${id}`, JSON.stringify(form)).toPromise();
+    console.log(form)
+    return this.http.put(`http://192.168.1.7/${id}`, JSON.stringify(form)).toPromise();
   }
 
   deleteUsuario(id){
-    return this.http.delete(`http://192.168.1.4/api/usuario/${id}`).toPromise();
+    return this.http.delete(`http://192.168.1.7/api/usuario/${id}`).toPromise();
   }
 
 }
